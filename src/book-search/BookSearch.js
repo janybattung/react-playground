@@ -12,7 +12,13 @@ export default class BookSearch extends Component {
         }
     }
     
-
+    PerformSort = (array) =>{
+        if(this.state.sort === "" || this.state.sort === "All")
+            return array;
+        
+         let sortedArray = array.filter(x=>x.volumeInfo.printType.toLowerCase().indexOf(this.state.sort.toLowerCase())!==-1);
+         return sortedArray;
+    }
     searchBook = (e) => {
         e.preventDefault();
         console.log("submitting");
@@ -28,7 +34,7 @@ export default class BookSearch extends Component {
             throw new Error(response.statusText);
           })
         .then(responseJson => {
-            const cleanData = this.cleanData(responseJson)
+            const cleanData = this.cleanData(responseJson);
             this.setState({ books: cleanData})
         }
             )
@@ -38,7 +44,7 @@ export default class BookSearch extends Component {
     }
 
     handleSearch = (e) => {
-        // console.log(e.target.value);
+        //console.log(e.target.value);
         this.setState({ searchField: e.target.value})
     }
     handleSort = (e) => {
@@ -60,7 +66,7 @@ export default class BookSearch extends Component {
         return(
             <div>
                 <SearchArea searchBook={this.searchBook} handleSearch={this.handleSearch} handleSort={this.handleSort}/>
-                <BookList books={this.state.books} />
+                <BookList books={this.PerformSort(this.state.books)} />
             </div>
         )
     }
