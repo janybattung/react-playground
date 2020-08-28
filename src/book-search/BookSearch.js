@@ -28,8 +28,8 @@ export default class BookSearch extends Component {
             throw new Error(response.statusText);
           })
         .then(responseJson => {
-            // const cleanData = this.cleanData(responseJson)
-            this.setState({ books: [...responseJson.items]})
+            const cleanData = this.cleanData(responseJson)
+            this.setState({ books: cleanData})
         }
             )
         .catch(err => {
@@ -46,7 +46,8 @@ export default class BookSearch extends Component {
     }
 
     cleanData =  (data) => {
-        const cleanedData = data.body.items.map((book) => {
+        console.log(data);
+                const cleanedData = data.items.map((book) => {
             if(book.volumeInfo.hasOwnProperty('imageLinks') === false) {
                 book.volumeInfo['imageLinks'] = {thumbnail: 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fthumbs.dreamstime.com%2Fb%2Fno-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg&imgrefurl=https%3A%2F%2Fwww.dreamstime.com%2Fno-image-available-icon-photo-camera-flat-vector-illustration-image132483141&tbnid=rTUv4JkpGmIAnM&vet=12ahUKEwiF2Mjc07zrAhUhCDQIHc_dCowQMygRegUIARDLAQ..i&docid=VFYzvrl3eeWmeM&w=800&h=800&q=no%20image%20available&ved=2ahUKEwiF2Mjc07zrAhUhCDQIHc_dCowQMygRegUIARDLAQ'}
             }

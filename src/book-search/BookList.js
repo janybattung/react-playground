@@ -11,7 +11,7 @@ const BookList = (props) => {
                                 image={book.volumeInfo.imageLinks.thumbnail}
                                 title={book.volumeInfo.title}
                                 author={book.volumeInfo.authors}
-                                price={book.volumeInfo.price}
+                                price={book.saleInfo.listPrice?book.saleInfo.listPrice.amount:0}
                                 description={book.volumeInfo.description}
                             />
                 })
