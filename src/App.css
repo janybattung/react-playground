@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+header {
+  padding: 40px 0 40px 0;
+  background: #343a40;
+  color: #fff;
+  text-align: center;
+}
+button {
+  background-color: #343a40;
+  color: white;
+}
+
+
+
+/* .App {
+    display: flex;
+    margin: 40px;
+    min-height: calc(100vh - 80px);
+  }
+  .left {
+    background-color: darkslategray;
+    color: azure;
+  }
+  .right {
+    background-color: wheat;
+    color: firebrick;
+  } */
